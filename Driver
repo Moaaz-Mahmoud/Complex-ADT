@@ -1,11 +1,14 @@
-/* The driver application
-   Tests the Complex class.
+/* The Complex class.cpp
+   The driver for the Complex library.
 */
 
+#include "stdafx.h"
 #include "Complex.h"
+#define TESTING 1		//Set this flag to 1 to enable testing.
 
 Complex z1(-3, -4), z2, z3;
 //Unit testing.
+#if TESTING
 void testBasic();
 void testArith_Com_typ();
 void testArith_typ_Com();
@@ -15,10 +18,11 @@ void testExcept();
 void testform();
 //Integration testing.
 void IntegrationTesting();
+#endif
 
 int main()
 {
-#if 1
+#if TESTING
 	printf_s("  %c  Unit testing\n\n\n", 254);
 	testBasic();
 	testArith_Com_typ();
@@ -34,11 +38,12 @@ int main()
 	printf_s("  %c  Integration testing\n\n\n", 254);
 	IntegrationTesting();
 #endif
-	Complex z(3, 4);
-	z/0;
+
+
 	system("pause"); return 0;
 }
 
+#if TESTING
 void testBasic() {
 	std::cout 
 		<< ' ' << char(254) << ' '
@@ -172,3 +177,5 @@ void IntegrationTesting() {
     z3 = (z2 = z1 + 2) + 2;
     std::cout << "z1 : " << z1 << "\tz2 : " << z2 << "\tz3 : " << z3 << '\n';
 }
+
+#endif
