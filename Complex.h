@@ -13,21 +13,18 @@ class Complex
 	//Data members.
 	float real;
 	float imaginary;
-protected:
+	mutable form_t form;		// A constant complex number can be written in any form.
 	//Private member functions.
 	void  get();
 	void  showREC()			const;
 	void  showPOL()			const;
 	void  showEXP()			const;
 	Complex divide_by(Complex);
-	//template <class T> friend Complex divide_by(Complex, T)	;	//-----------------delete me--------------
 	float calculate_angle() const;
 public:
-	//Data members.
-	mutable form_t form;
 	//No-arg constructor
 	Complex() : real(0), imaginary(0), form(REC) {}
-	//Two-arg constructor
+	//Two/three-arg constructor
 	Complex(float x, float y, form_t c = REC) : real(x), imaginary(y), form(c) {}
 	//virtual destructor
 	virtual ~Complex() {}
@@ -120,14 +117,22 @@ public:
 		zero_div() {
 			std::cout 
 				<< " *** An exception was thrown due to an attempt\n"
-				<< "     to divide by zero. ***\n";
+				<< "     to divide by zero.\n"
+				<< " *** Continue anyway? 1:cont, else: exit\n";
+			char choice;
+			std::cin >> choice;
+			choice == '1' ? void(0) : exit(0);
 		}
 	}; //end zero_div
 	class unspec_ang {
 	public:
 		unspec_ang() {
 			std::cout
-				<< "*** Unspecified angle ***\n";
+				<< "*** Last angle calculation operation failed.\n"
+				<< "    Continue anyway? 1:cont, else: exit ***\n";
+			char choice;
+			std::cin >> choice;
+			choice == '1' ? void(0) : exit(0);
 		}
 	};
 }; //end Complex
