@@ -7,11 +7,13 @@
 #define COMPLEX_H_
 
 #include <cstdlib>
+#include <stdexcept>
 #include <iostream>
 #include <string>
 #include <cmath>
 #include <stdio.h>
 #include <stdlib.h>
+#define NEW_LINE std::cout << '\n';
 const float PI = 3.14159;
 
 enum form_t { REC, POL, EXP };
@@ -82,11 +84,10 @@ public:
 	template <class T>
 	Complex operator / (T num) {
 		Complex quotient(0, 0);
-		Complex Num(num, 0);
-		try {
-			quotient = this->divide_by(Num);
+		if (num == 0) {
+			std::cout << "Can't perform operation!!!\n";
+			exit(1);
 		}
-		catch (Complex::zero_div()) {}
 		return quotient;
 	}
 	//Operators (Other datatypes with Complex)
@@ -106,8 +107,10 @@ public:
 	friend Complex operator / (T num, Complex C) {
 		float x, y;
 		Complex pre_result;
-		if (C.get_real() == 0 && C.get_imaginary() == 0)
-			throw Complex::zero_div();
+		if (C.get_real() == 0 && C.get_imaginary() == 0) {
+			std::cout << "Can't perform operation!!!\n";
+			exit(1);
+		}
 		x = C.get_real() / (pow(C.get_real(), 2) + pow(C.get_imaginary(), 2));
 		y = -C.get_imaginary() / (pow(C.get_real(), 2) + pow(C.get_imaginary(), 2));
 		pre_result.set(x, y);
@@ -120,24 +123,13 @@ public:
 	Complex power(int n);
 	Complex* root(const int k);
 	//Exception classes
-	class zero_div {
-	public:
-		zero_div() {
-			std::cout
-				<< " *** An exception was thrown due to an attempt\n"
-				<< "     to divide by zero.\n"
-				<< " *** Continue anyway? 1:cont, else: exit\n";
-			char choice;
-			std::cin >> choice;
-			choice == '1' ? void(0) : exit(0);
-		}
-	}; //end zero_div
 	class unspec_ang {
 	public:
 		unspec_ang() {
 			std::cout
 				<< "*** Last angle calculation operation failed.\n"
-				<< "    Continue anyway? 1:cont, else: exit ***\n";
+				<< "    Continue anyway? 1:cont, else: exit ***\n"
+				<< ">>> ";
 			char choice;
 			std::cin >> choice;
 			choice == '1' ? void(0) : exit(0);
