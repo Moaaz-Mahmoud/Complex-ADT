@@ -1,4 +1,4 @@
-# Complex numbers library 
+# Complex Numbers ADT
  
 This project provides an ADT for the complex numbers, the class ```Complex```. It allows performing arithmetic operations on complex numbers such as addition, subtraction, multiplication and division through overloaded operators for the ease of use. Operations can be performed on complex numbers with complex numbers or with primitive data types such as double. For example, the following statements are valid:
 ```
