@@ -1,7 +1,8 @@
 # Complex Numbers ADT
  
-This project is mainly an ADT for complex numbers. It allows performing arithmetic operations on complex numbers such as addition, subtraction, multiplication and division through overloaded operators for the ease of use. Operations can be performed on complex numbers with complex numbers or with primitive data types such as ```float``` and ```int```. 
-The following statements perform some operations involving ```Complex``` objects along with other variables to demonstrate the use of the class:
+This project is mainly an ADT for complex numbers. It allows performing arithmetic operations on complex numbers such as addition, subtraction, multiplication and division through overloaded operators for the ease of use. Operations can be performed on complex numbers with complex numbers or with primitive data types such as ```float``` and ```int```.
+
+The following statements perform some operations involving ```Complex``` objects along with a ```double``` variable to demonstrate the use of the class:
 ```
 double d = 5.214;
 Complex z1, z2(2, -3.2), z3(3, 4);
