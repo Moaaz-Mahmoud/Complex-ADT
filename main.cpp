@@ -1,5 +1,5 @@
-/* The Complex class.cpp
-   The driver for the Complex library.
+/* main.cpp
+   The driver for the 'Complex' class.
 */
 
 #include "Complex.h"
